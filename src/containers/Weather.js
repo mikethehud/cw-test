@@ -32,7 +32,7 @@ class Weather extends React.Component {
 
 		return (
 			<div>
-				<h1>Today's weather for <strong>Auckland</strong></h1>
+				<h1>Current weather for <strong>Auckland</strong></h1>
 				{ fetched &&
 					<CurrentWeather
 						temperature={data.main.temp}
