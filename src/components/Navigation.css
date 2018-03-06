@@ -1,12 +1,17 @@
 nav {
 	width:100%;
-	display:flex;
-	flex-direction: row;
-	align-items: center;
 	margin:0 -15px;
 	background-color:#fff;
 	margin: 0 0 3em 0;
 	padding:1em 0em;
+}
+
+nav .menu {
+	width:100%;
+	display:flex;
+	flex-direction: row;
+	align-items: center;
+	background-color:#fff;
 }
 
 nav a {
@@ -31,4 +36,8 @@ nav a {
 nav a:hover {
 	background-color:#000;
 	color:#fff;
+}
+
+nav .input {
+	padding: 1em 1em 0em 1em;
 }

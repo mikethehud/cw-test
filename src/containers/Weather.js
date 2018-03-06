@@ -1,25 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchCurrentWeather } from "../actions/weatherActions";
 import MDSpinner from "react-md-spinner";
 
 import CurrentWeather from "../components/CurrentWeather.js";
 
 const mapStateToProps = (state, action) => {
 	return {
-		...state.currentWeather
+		weather: state.weather,
+		place: state.place
 	}
 }
 
 class Weather extends React.Component {
 
-	componentDidMount() {
-		this.props.dispatch(fetchCurrentWeather());
-	}
-
 	render() {
 
-		let { data, fetched, fetching, error } = this.props;
+		let { weather, place } = this.props;
+		let { data, fetched, fetching, error } = weather;
 
 		// Check for errors
 		if(error) {
@@ -30,9 +27,23 @@ class Weather extends React.Component {
 			)
 		}
 
+		// Display message if no place selected
+
+		console.log('plc', place);
+
+		if(!place.lat || !place.lng) {
+			return (
+				<div>
+					<strong>Please select a place</strong> to get the current weather.
+				</div>
+			)
+		}
+
+		console.log(this.props);
+
 		return (
 			<div>
-				<h1>Current weather for <strong>Auckland</strong></h1>
+				<h1>Current weather for<br /><strong>{place.address}</strong></h1>
 				{ fetched &&
 					<CurrentWeather
 						temperature={data.main.temp}

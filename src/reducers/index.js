@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
 import currentWeather from "./weatherReducer";
 import forecast from "./forecastReducer";
+import place from "./placeReducer";
 
 export default combineReducers({
-	currentWeather,
-	forecast
+	forecast: forecast,
+	weather: currentWeather,
+	place: place
 })

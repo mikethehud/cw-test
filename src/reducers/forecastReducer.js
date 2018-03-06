@@ -5,7 +5,7 @@ let initialState = {
 	fetched: false
 }
 
-export default function reducer (state=initialState, action) {
+export default function forecastReducer (state=initialState, action) {
 
 	switch (action.type) {
 
@@ -19,7 +19,7 @@ export default function reducer (state=initialState, action) {
 			return { ...state, data: null, fetching: false, error: action.payload }
 
 		default:
-			return initialState;
+			return state;
 
 	}
 }

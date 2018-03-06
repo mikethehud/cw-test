@@ -1,25 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchForecast } from "../actions/weatherActions";
 import MDSpinner from "react-md-spinner";
 
 import ForecastDay from "../components/ForecastDay.js";
 
 const mapStateToProps = (state, action) => {
 	return {
-		...state.forecast
+		forecast: state.forecast,
+		place: state.place
 	}
 }
 
-class Weather extends React.Component {
-
-	componentDidMount() {
-		this.props.dispatch(fetchForecast());
-	}
+class Forecast extends React.Component {
 
 	render() {
 
-		let { data, fetched, fetching, error } = this.props;
+		let { forecast, place } = this.props;
+		let { data, fetched, fetching, error } = forecast;
 
 		// Split up the data list into Days
 		if(fetched) {
@@ -70,13 +67,22 @@ class Weather extends React.Component {
 			)
 		}
 
+		// Display message if no place selected
+		if(!place.lat || !place.lng) {
+			return (
+				<div>
+					<strong>Please select a place</strong> to get the weather forecast.
+				</div>
+			)
+		}
+
 		return (
 			<div>
-				<h1>Forecast for <strong>Auckland</strong></h1>
+				<h1>Forecast for<br /><strong>{place.address}</strong></h1>
 				{ fetched &&
-					days.map(day => {
+					days.map((day, i) => {
 						return (
-							<ForecastDay list={day.list} date={day.date} />
+							<ForecastDay key={i} list={day.list} date={day.date} />
 						)
 					})
 				}
@@ -89,4 +95,4 @@ class Weather extends React.Component {
 	}
 }
 
-export default connect(mapStateToProps)(Weather);
+export default connect(mapStateToProps)(Forecast);

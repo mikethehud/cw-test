@@ -22,7 +22,7 @@ export default class ForecastDay extends React.Component {
 			<div className="ForecastDay">
 				<h3>{date}</h3>
 				<div className="ForecastEntryWrapper">
-					{list.map(item => <ForecastEntry temperature={item.temperature} icon={item.icon} time={item.time} />)}
+					{list.map((item, i) => <ForecastEntry key={i} temperature={item.temperature} icon={item.icon} time={item.time} />)}
 				</div>
 			</div>
 		)
