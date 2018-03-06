@@ -1,0 +1,41 @@
+.ForecastEntry {
+	width:auto;
+	flex-grow:1;
+	position: relative;
+}
+
+.ForecastEntry .icon {
+	position: absolute;
+	top:0px;
+	width:50px;
+	right:50%;
+	margin-right:-25px;
+}
+
+.ForecastEntry .time {
+	width:100%;
+	text-align: center;
+	padding-top:50px;
+}
+
+.ForecastEntry .temperature {
+	position: relative;
+	height:100px;
+}
+
+.ForecastEntry .temperature .bar {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	background-color: red;
+}
+
+.ForecastEntry .temperature .number {
+	position: absolute;
+	bottom: 5px;
+	width: 100%;
+	text-align: center;
+	color: #fff;
+	font-size: 10pt;
+}

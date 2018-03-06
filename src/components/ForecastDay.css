@@ -1,0 +1,10 @@
+.ForecastDay {
+	width:100%;
+}
+
+.ForecastDay .ForecastEntryWrapper {
+	display:flex;
+	flex-direction: row;
+	width:100%;
+	justify-content: space-between;
+}
