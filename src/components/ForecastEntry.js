@@ -17,7 +17,7 @@ export default class ForecastEntry extends React.Component {
 
 		return (
 			<div className="ForecastEntry">
-				<img src={ "http://openweathermap.org/img/w/" + icon + ".png" } className="icon" />
+				<img src={ "http://openweathermap.org/img/w/" + icon + ".png" } alt="Weather Icon" className="icon" />
 				<div className="time">{time}</div>
 				<div className="temperature">
 					<div className="bar" style={{ height: temperature*1.7 }} />

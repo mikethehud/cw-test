@@ -6,10 +6,14 @@ import ForecastEntry from "./ForecastEntry.js";
 
 export default class ForecastDay extends React.Component {
 
-	/*static propTypes = {
-		temperature: PropTypes.number.isRequired,
-		icon: PropTypes.string.isRequired
-	}*/
+	static propTypes = {
+		date: PropTypes.string,
+		list: PropTypes.arrayOf(PropTypes.shape({
+			temperature: PropTypes.number,
+			icon: PropTypes.string,
+			time: PropTypes.string
+		}))
+	}
 
 	render() {
 		let { date, list } = this.props;

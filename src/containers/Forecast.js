@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchForecast } from "../actions/weatherActions";
+import MDSpinner from "react-md-spinner";
 
 import ForecastDay from "../components/ForecastDay.js";
 
@@ -34,7 +35,7 @@ class Weather extends React.Component {
 
 				// Ignore any data for the current day
 				let today = new Date();
-				if(today.toDateString() == dateString)
+				if(today.toDateString() === dateString)
 					return;
 
 				// Take the relevant info
@@ -60,9 +61,18 @@ class Weather extends React.Component {
 			})
 		}
 
+		// Check for errors
+		if(error) {
+			return (
+				<div>
+					<strong>ERROR:</strong> {error}
+				</div>
+			)
+		}
+
 		return (
 			<div>
-				<h2>Forecast for <strong>Auckland</strong></h2>
+				<h1>Forecast for <strong>Auckland</strong></h1>
 				{ fetched &&
 					days.map(day => {
 						return (
@@ -72,7 +82,7 @@ class Weather extends React.Component {
 				}
 
 				{ fetching &&
-					<div>SPINNER</div>
+					<MDSpinner size={70} />
 				}
 			</div>
 		)

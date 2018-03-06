@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchCurrentWeather } from "../actions/weatherActions";
+import MDSpinner from "react-md-spinner";
 
 import CurrentWeather from "../components/CurrentWeather.js";
 
@@ -20,9 +21,18 @@ class Weather extends React.Component {
 
 		let { data, fetched, fetching, error } = this.props;
 
+		// Check for errors
+		if(error) {
+			return (
+				<div>
+					<strong>ERROR:</strong> {error}
+				</div>
+			)
+		}
+
 		return (
 			<div>
-				<h2>Today's weather for <strong>Auckland</strong></h2>
+				<h1>Today's weather for <strong>Auckland</strong></h1>
 				{ fetched &&
 					<CurrentWeather
 						temperature={data.main.temp}
@@ -34,7 +44,7 @@ class Weather extends React.Component {
 				}
 
 				{ fetching &&
-					<div>SPINNER</div>
+					<MDSpinner size={70} />
 				}
 			</div>
 		)

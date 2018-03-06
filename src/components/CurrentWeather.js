@@ -15,13 +15,11 @@ export default class CurrentWeather extends React.Component {
 		let { temperature, humidity, main, icon } = this.props;
 
 		// Temperature from kelvin to celcius
-		temperature = temperature - 273.15;
+		temperature = Math.round(temperature - 273.15);
 
 		return (
-			<div class="CurrentWeather">
-				<div className="CurrentWeather-icon">
-					<img src={ "http://openweathermap.org/img/w/" + icon + ".png" } />
-				</div>
+			<div className="CurrentWeather">
+				<img src={ "http://openweathermap.org/img/w/" + icon + ".png" } alt="Weather Icon" />
 				<p><strong>{main}</strong></p>
 				<p>Temperature: {temperature}°C</p>
 				<p>Humidity: {humidity}%</p>
